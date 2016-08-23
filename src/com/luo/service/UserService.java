@@ -3,6 +3,8 @@ package com.luo.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.luo.bean.User;
 import com.luo.dao.UserDao;
@@ -21,12 +23,12 @@ public class UserService {
 		this.userDao = userDao;
 	}
 	
-	//@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void save(User user) {
 		userDao.save(user);
 	}
 	
-	//@Transactional
+	@Transactional
 	public void getUserAll() {
 		userDao.getUserAll();
 	}

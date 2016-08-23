@@ -3,23 +3,24 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.luo.bean.User;
-import com.luo.service.AccountService;
 import com.luo.service.UserService;
 
 public class TestSpring {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		/*ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		AccountService as = (AccountService)ac.getBean("as");
 		as.getAccount();
-		System.out.println("end");
+		System.out.println("end");*/
 	}
 	@Test
 	public void test() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		UserService us = (UserService)ac.getBean("us");
-		us.save(new User());
+		User user = new User();
+		user.setName("luoayfei");
+		us.save(user);
 	}
 	
 	@Test
@@ -43,13 +44,13 @@ public class TestSpring {
 		System.out.println("++++++++++++++++++" + System.currentTimeMillis() + "++++++++++++++++++");
 	}
 	
-	@Test
-	public void testMybatis() {
+	//@Test
+	/*public void testMybatis() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		AccountService as = (AccountService)ac.getBean("as");
 		as.getAccount();
 		System.out.println("end");
 		
-	}
+	}*/
 }
 
